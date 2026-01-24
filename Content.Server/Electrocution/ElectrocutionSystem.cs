@@ -589,22 +589,4 @@ public sealed class ElectrocutionSystem : SharedElectrocutionSystem
         }
         _audio.PlayPvs(electrified.ShockNoises, targetUid, AudioParams.Default.WithVolume(electrified.ShockVolume));
     }
-
-    /// <summary>
-    /// Goobstation - If always shows spark is true, on mapinit the animation will start playing on loop.
-    /// </summary>
-    /// <param name="uid"></param>
-    /// <param name="component"></param>
-    /// <param name="args"></param>
-    private void OnMapInit(EntityUid uid, ElectrifiedComponent component, MapInitEvent args)
-    {
-        if (!component.AlwaysShowSparks)
-            return;
-
-        if (!TryComp<AppearanceComponent>(uid, out _))
-            return;
-
-        _appearance.SetData(uid, ElectrifiedVisuals.ShowSparks, true);
-    }
-    // End of Goobstation
 }
